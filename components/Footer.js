@@ -1,3 +1,4 @@
+import Map from "../components/Map";
 export const Footer = () => {
   let mapSource =
     "https://maps.googleapis.com/maps/api/staticmap?@-6.2170231,106.7660417,17z";
@@ -13,11 +14,7 @@ export const Footer = () => {
             </p>
           </div>
           <div class="">
-            <img
-              src="/images/gmapPhoto.jpg"
-              alt="location"
-              class="h-48 w-full  object-cover"
-            />
+            <Map />
           </div>
         </div>
       </div>
