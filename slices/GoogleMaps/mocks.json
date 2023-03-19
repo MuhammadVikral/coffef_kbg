@@ -1,0 +1,32 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Situation"
+            }
+          }
+        ]
+      },
+      "googlemap": {
+        "__TYPE__": "GeoPointContent",
+        "position": {
+          "lat": 48.8703712,
+          "lng": 2.3865198
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]
