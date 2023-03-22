@@ -96,7 +96,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | GoogleMapsSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | RowButtonSlice | MainCarouselSlice;
 /**
  * Page document from Prismic
  *
@@ -132,55 +132,6 @@ interface SettingsDocumentData {
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
 export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
-/**
- * Primary content in GoogleMaps → Primary
- *
- */
-interface GoogleMapsSliceDefaultPrimary {
-    /**
-     * Title field in *GoogleMaps → Primary*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: This is where it all begins...
-     * - **API ID Path**: google_maps.primary.title
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    title: prismicT.TitleField;
-    /**
-     * GoogleMap field in *GoogleMaps → Primary*
-     *
-     * - **Field Type**: GeoPoint
-     * - **Placeholder**: *None*
-     * - **API ID Path**: google_maps.primary.googlemap
-     * - **Documentation**: https://prismic.io/docs/core-concepts/geopoint
-     *
-     */
-    googlemap: prismicT.GeoPointField;
-}
-/**
- * Default variation for GoogleMaps Slice
- *
- * - **API ID**: `default`
- * - **Description**: `GoogleMaps`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type GoogleMapsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<GoogleMapsSliceDefaultPrimary>, never>;
-/**
- * Slice variation for *GoogleMaps*
- *
- */
-type GoogleMapsSliceVariation = GoogleMapsSliceDefault;
-/**
- * GoogleMaps Shared Slice
- *
- * - **API ID**: `google_maps`
- * - **Description**: `GoogleMaps`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type GoogleMapsSlice = prismicT.SharedSlice<"google_maps", GoogleMapsSliceVariation>;
 /**
  * Primary content in Hero → Primary
  *
@@ -459,6 +410,45 @@ type ImageCardsSliceVariation = ImageCardsSliceDefault;
  */
 export type ImageCardsSlice = prismicT.SharedSlice<"image_cards", ImageCardsSliceVariation>;
 /**
+ * Item in MainCarousel → Items
+ *
+ */
+export interface MainCarouselSliceDefaultItem {
+    /**
+     * Image field in *MainCarousel → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_carousel.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for MainCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `MainCarousel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MainCarouselSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<MainCarouselSliceDefaultItem>>;
+/**
+ * Slice variation for *MainCarousel*
+ *
+ */
+type MainCarouselSliceVariation = MainCarouselSliceDefault;
+/**
+ * MainCarousel Shared Slice
+ *
+ * - **API ID**: `main_carousel`
+ * - **Description**: `MainCarousel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MainCarouselSlice = prismicT.SharedSlice<"main_carousel", MainCarouselSliceVariation>;
+/**
  * Primary content in Quote → Primary
  *
  */
@@ -507,6 +497,55 @@ type QuoteSliceVariation = QuoteSliceDefault;
  *
  */
 export type QuoteSlice = prismicT.SharedSlice<"quote", QuoteSliceVariation>;
+/**
+ * Primary content in RowButton → Primary
+ *
+ */
+interface RowButtonSliceDefaultPrimary {
+    /**
+     * goHome field in *RowButton → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: row_button.primary.gohome
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    gohome: prismicT.LinkField;
+    /**
+     * goContact field in *RowButton → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: row_button.primary.gocontact
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    gocontact: prismicT.LinkField;
+}
+/**
+ * Default variation for RowButton Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `RowButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RowButtonSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<RowButtonSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *RowButton*
+ *
+ */
+type RowButtonSliceVariation = RowButtonSliceDefault;
+/**
+ * RowButton Shared Slice
+ *
+ * - **API ID**: `row_button`
+ * - **Description**: `RowButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RowButtonSlice = prismicT.SharedSlice<"row_button", RowButtonSliceVariation>;
 /**
  * Primary content in Text → Primary
  *
@@ -729,6 +768,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, GoogleMapsSliceDefaultPrimary, GoogleMapsSliceDefault, GoogleMapsSliceVariation, GoogleMapsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
     }
 }

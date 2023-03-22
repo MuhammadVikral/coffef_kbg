@@ -1,28 +1,30 @@
 {
-  "id": "google_maps",
+  "id": "row_button",
   "type": "SharedSlice",
-  "name": "GoogleMaps",
-  "description": "GoogleMaps",
+  "name": "RowButton",
+  "description": "RowButton",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "GoogleMaps",
+      "description": "RowButton",
       "primary": {
-        "title": {
-          "type": "StructuredText",
+        "gohome": {
+          "type": "Link",
           "config": {
-            "single": "heading1",
-            "label": "Title",
-            "placeholder": "This is where it all begins..."
+            "label": "goHome",
+            "placeholder": "",
+            "select": null
           }
         },
-        "googlemap": {
-          "type": "GeoPoint",
+        "gocontact": {
+          "type": "Link",
           "config": {
-            "label": "GoogleMap"
+            "label": "goContact",
+            "placeholder": "",
+            "select": null
           }
         }
       },

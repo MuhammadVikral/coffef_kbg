@@ -6,6 +6,7 @@ import * as prismicH from "@prismicio/helpers";
 
 export const Navbar = ({ navigation }) => {
   const [nav, setNav] = useState(false);
+  const [pageIndex, setPageIndex] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
   const [textFontHome, setTextFontHome] = useState("font-bold");
@@ -13,7 +14,6 @@ export const Navbar = ({ navigation }) => {
   const handleNav = () => {
     setNav(!nav);
   };
-
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 90) {
@@ -30,22 +30,33 @@ export const Navbar = ({ navigation }) => {
   return (
     <div
       style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 z-10 w-full duration-300 ease-in"
+      className="fixed left-0 top-0 z-10 w-full px-24 duration-300 ease-in"
     >
-      <div className=" mx-24 flex items-center justify-between p-4 text-white">
+      <div className="  flex items-center justify-between p-4 text-white">
         <Link href="/">
           <h1 style={{ color: `${textColor}` }} className="text-4xl font-bold">
             KBG
           </h1>
         </Link>
-        <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
-          {navigation.data?.links.map((item) => (
-            <li key={prismicH.asText(item.label)} className="p4 ml-5">
-              <PrismicLink field={item.link}>
-                <PrismicText field={item.label} />
-              </PrismicLink>
-            </li>
-          ))}
+        <ul
+          style={{ color: `${textColor}` }}
+          className="hidden text-lg sm:flex"
+        >
+          {navigation.data?.links.map((item, index) => {
+            let fontstyle = "font-bold";
+            return (
+              <div onClick={() => setPageIndex({ index })}>
+                <li
+                  key={prismicH.asText(item.label)}
+                  className="p4 ml-5 font-bold"
+                >
+                  <PrismicLink field={item.link}>
+                    <PrismicText field={item.label} />
+                  </PrismicLink>
+                </li>
+              </div>
+            );
+          })}
         </ul>
 
         {/* Mobile Button */}

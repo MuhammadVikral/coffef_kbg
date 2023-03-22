@@ -8,15 +8,22 @@ import { Layout } from "../components/Layout";
 
 const Page = ({ page, navigation, settings }) => {
   return (
-    <Layout navigation={navigation} settings={settings}>
-      <Head>
-        <title>
-          {prismicH.asText(page.data.title)} |{" "}
-          {prismicH.asText(settings.data.siteTitle)}
-        </title>
-      </Head>
-      <SliceZone slices={page.data.slices} components={components} />
-    </Layout>
+    <div
+      class="h-screen bg-black bg-cover bg-repeat  "
+      style={{
+        backgroundImage: `url('/images/bgblack.jpg')`,
+      }}
+    >
+      <Layout navigation={navigation} settings={settings}>
+        <Head>
+          <title>
+            {prismicH.asText(page.data.title)} |{" "}
+            {prismicH.asText(settings.data.siteTitle)}
+          </title>
+        </Head>
+        <SliceZone slices={page.data.slices} components={components} />
+      </Layout>
+    </div>
   );
 };
 

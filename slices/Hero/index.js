@@ -8,7 +8,11 @@ import { Heading } from "../../components/Heading";
 /** @type {import("@prismicio/react").PrismicRichTextProps['components']} */
 const components = {
   heading1: ({ children }) => (
-    <Heading as="h2" size="xl" className="mb-4 mt-12 first:mt-0 last:mb-0">
+    <Heading
+      as="h2"
+      size="xl"
+      className="mb-4 mt-12 h-screen first:mt-0 last:mb-0"
+    >
       {children}
     </Heading>
   ),

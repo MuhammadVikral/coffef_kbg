@@ -1,6 +1,7 @@
 import * as prismicH from "@prismicio/helpers";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import RichText from "../../components/RichText";
 
 import { Bounded } from "../../components/Bounded";
 
@@ -9,9 +10,9 @@ const TextWithImage = ({ slice }) => {
 
   return (
     <Bounded as="section" className="bg-white">
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-center gap-24 md:grid-cols-2">
         <div>
-          <PrismicRichText field={slice.primary.text} />
+          <RichText field={slice.primary.text} className="text-left" />
         </div>
         <div>
           {prismicH.isFilled.image(image) && (

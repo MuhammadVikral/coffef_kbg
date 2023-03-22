@@ -57,7 +57,10 @@
             "home_about_us": {
               "type": "SharedSlice"
             },
-            "google_maps": {
+            "row_button": {
+              "type": "SharedSlice"
+            },
+            "main_carousel": {
               "type": "SharedSlice"
             }
           }

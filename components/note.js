@@ -7,3 +7,22 @@ const uttonLink =
               {slice.primary.buttonText || "Learn More"}
             </PrismicLink>
           )}
+#navbar link
+                  <PrismicLink field={item.link}>
+                    <PrismicText field={item.label} />
+                  </PrismicLink>
+#usestate navbar
+      useEffect(() => {
+    const changeColor = () => {
+      if (window.scrollY >= 90) {
+        setColor("#ffffff");
+        setTextColor("#000000");
+      } else {
+        setColor("transparent");
+        setTextColor("#ffffff");
+      }
+    };
+    window.addEventListener("scroll", changeColor);
+  }, []);
+
+
