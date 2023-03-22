@@ -6,6 +6,57 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Article item documents */
+interface ArticleItemDocumentData {
+    /**
+     * Title field in *Article item*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_item.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Parent field in *Article item*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_item.parent
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    parent: prismicT.RelationField;
+    /**
+     * Slice Zone field in *Article item*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_item.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<ArticleItemDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Article item → Slice Zone*
+ *
+ */
+type ArticleItemDocumentDataSlicesSlice = TextSlice | TextWithImageSlice | ImageSlice | HeroSlice;
+/**
+ * Article item document from Prismic
+ *
+ * - **API ID**: `article_item`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticleItemDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArticleItemDocumentData>, "article_item", Lang>;
 /** Content for Navigation documents */
 interface NavigationDocumentData {
     /**
@@ -96,7 +147,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | RowButtonSlice | MainCarouselSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | RowButtonSlice | MainCarouselSlice | ArticleCardsSlice;
 /**
  * Page document from Prismic
  *
@@ -131,7 +182,92 @@ interface SettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
-export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes = ArticleItemDocument | NavigationDocument | PageDocument | SettingsDocument;
+/**
+ * Primary content in ArticleCards → Primary
+ *
+ */
+interface ArticleCardsSliceDefaultPrimary {
+    /**
+     * Title field in *ArticleCards → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: article_cards.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+}
+/**
+ * Item in ArticleCards → Items
+ *
+ */
+export interface ArticleCardsSliceDefaultItem {
+    /**
+     * Article Title field in *ArticleCards → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_cards.items[].article_title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    article_title: prismicT.KeyTextField;
+    /**
+     * Article Description field in *ArticleCards → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_cards.items[].article_description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    article_description: prismicT.KeyTextField;
+    /**
+     * Article Image field in *ArticleCards → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_cards.items[].article_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    article_image: prismicT.ImageField<never>;
+    /**
+     * Article Page field in *ArticleCards → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_cards.items[].article_page
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    article_page: prismicT.LinkField;
+}
+/**
+ * Default variation for ArticleCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ArticleCards`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ArticleCardsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ArticleCardsSliceDefaultPrimary>, Simplify<ArticleCardsSliceDefaultItem>>;
+/**
+ * Slice variation for *ArticleCards*
+ *
+ */
+type ArticleCardsSliceVariation = ArticleCardsSliceDefault;
+/**
+ * ArticleCards Shared Slice
+ *
+ * - **API ID**: `article_cards`
+ * - **Description**: `ArticleCards`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ArticleCardsSlice = prismicT.SharedSlice<"article_cards", ArticleCardsSliceVariation>;
 /**
  * Primary content in Hero → Primary
  *
@@ -768,6 +904,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { ArticleItemDocumentData, ArticleItemDocumentDataSlicesSlice, ArticleItemDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ArticleCardsSliceDefaultPrimary, ArticleCardsSliceDefaultItem, ArticleCardsSliceDefault, ArticleCardsSliceVariation, ArticleCardsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
     }
 }

@@ -6,13 +6,13 @@ import { Bounded } from "../../components/Bounded";
 
 const Quote = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white">
+    <Bounded as="section" className="">
       {prismicH.isFilled.richText(slice.primary.quote) && (
         <figure className="grid gap-6">
           <blockquote>
             <p
               className={clsx(
-                "text-4xl font-medium leading-tight md:text-5xl md:leading-tight",
+                "text-4xl font-medium leading-tight text-white md:text-5xl md:leading-tight",
                 !prismicH.isFilled.keyText(slice.primary.source) &&
                   "text-center"
               )}
@@ -25,7 +25,7 @@ const Quote = ({ slice }) => {
             </p>
           </blockquote>
           {prismicH.isFilled.keyText(slice.primary.source) && (
-            <figcaption className="text-right">
+            <figcaption className="text-right text-white">
               &mdash; {slice.primary.source}
             </figcaption>
           )}

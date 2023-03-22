@@ -97,6 +97,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "ArticleCards": {
+      "default": {
+        "primary": {}
+      }
     }
   },
   "_cts": {
@@ -109,6 +114,7 @@
       }
     },
     "navigation": {},
-    "settings": {}
+    "settings": {},
+    "article_item": {}
   }
 }

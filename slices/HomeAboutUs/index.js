@@ -22,7 +22,7 @@ const HomeAboutUs = ({ slice }) => {
           className="pointer-events-none select-none object-cover "
         />
       )}
-      <div className="align-center mx-24 grid grid-cols-1 items-center justify-center gap-8 py-48 md:grid-cols-2">
+      <div className="mx-24 grid grid-cols-1 items-center justify-end gap-8 py-24 md:grid-cols-2">
         <div>
           <RichText
             field={slice.primary.text}

@@ -62,6 +62,9 @@
             },
             "main_carousel": {
               "type": "SharedSlice"
+            },
+            "article_cards": {
+              "type": "SharedSlice"
             }
           }
         }

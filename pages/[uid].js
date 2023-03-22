@@ -9,7 +9,7 @@ import { Layout } from "../components/Layout";
 const Page = ({ page, navigation, settings }) => {
   return (
     <div
-      class="h-screen bg-black bg-cover bg-repeat  "
+      class="bg-black bg-cover bg-no-repeat pt-24"
       style={{
         backgroundImage: `url('/images/bgblack.jpg')`,
       }}
@@ -35,7 +35,6 @@ export async function getStaticProps({ params, locale, previewData }) {
   const page = await client.getByUID("page", params.uid, { lang: locale });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
-
   return {
     props: {
       page,
