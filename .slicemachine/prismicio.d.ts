@@ -244,6 +244,16 @@ export interface ArticleCardsSliceDefaultItem {
      *
      */
     article_page: prismicT.LinkField;
+    /**
+     * Article Child field in *ArticleCards → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_cards.items[].article_child
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    article_child: prismicT.RelationField;
 }
 /**
  * Default variation for ArticleCards Slice

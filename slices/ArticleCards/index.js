@@ -15,7 +15,7 @@ const ImageCard = ({ item }) => {
   const image = item.article_image;
   const title = item.article_title;
   const desc = item.article_description;
-  const linkNav = item.article_page;
+  const linkNav = item.article_child;
 
   return (
     <div class="flex justify-center">

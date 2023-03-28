@@ -38,7 +38,6 @@
           [
             "article_image",
             {
-              "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
                 "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
@@ -56,6 +55,9 @@
                 },
                 "background": "transparent"
               },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
               "thumbnails": {}
             }
           ],
@@ -66,6 +68,16 @@
               "value": {
                 "__TYPE__": "ExternalLink",
                 "url": "https://slicemachine.dev"
+              }
+            }
+          ],
+          [
+            "article_child",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
               }
             }
           ]
