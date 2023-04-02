@@ -1,0 +1,35 @@
+{
+  "id": "product_items",
+  "label": "Product Items",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "id",
+          "placeholder": ""
+        }
+      },
+      "product_name": {
+        "type": "Text",
+        "config": {
+          "label": "Product Name",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "product_items": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

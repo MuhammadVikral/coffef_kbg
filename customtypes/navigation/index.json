@@ -29,6 +29,28 @@
             }
           }
         }
+      },
+      "product_list": {
+        "type": "Group",
+        "config": {
+          "label": "Product List",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "select": "document"
+              }
+            }
+          }
+        }
       }
     }
   }

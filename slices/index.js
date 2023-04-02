@@ -6,6 +6,7 @@ import HomeAboutUs from './HomeAboutUs';
 import Image from './Image';
 import ImageCards from './ImageCards';
 import MainCarousel from './MainCarousel';
+import ProductItems from './ProductItems';
 import Quote from './Quote';
 import RowButton from './RowButton';
 import Text from './Text';
@@ -19,6 +20,7 @@ export {
 	Image,
 	ImageCards,
 	MainCarousel,
+	ProductItems,
 	Quote,
 	RowButton,
 	Text,
@@ -33,6 +35,7 @@ export const components = {
 	image: Image,
 	image_cards: ImageCards,
 	main_carousel: MainCarousel,
+	product_items: ProductItems,
 	quote: Quote,
 	row_button: RowButton,
 	text: Text,

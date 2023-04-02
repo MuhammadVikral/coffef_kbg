@@ -70,6 +70,17 @@ interface NavigationDocumentData {
      *
      */
     links: prismicT.GroupField<Simplify<NavigationDocumentDataLinksItem>>;
+    /**
+     * Product List field in *Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.product_list[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    product_list: prismicT.GroupField<Simplify<NavigationDocumentDataProductListItem>>;
 }
 /**
  * Item in Navigation → Links
@@ -96,6 +107,32 @@ export interface NavigationDocumentDataLinksItem {
      *
      */
     link: prismicT.LinkField;
+}
+/**
+ * Item in Navigation → Product List
+ *
+ */
+export interface NavigationDocumentDataProductListItem {
+    /**
+     * Title field in *Navigation → Product List*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.product_list[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Link field in *Navigation → Product List*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.product_list[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.RelationField;
 }
 /**
  * Navigation document from Prismic
@@ -158,6 +195,244 @@ type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSli
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+/** Content for Product Item Detail documents */
+interface ProductItemDetailDocumentData {
+    /**
+     * Title field in *Product Item Detail*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Image field in *Product Item Detail*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.image[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    image: prismicT.GroupField<Simplify<ProductItemDetailDocumentDataImageItem>>;
+    /**
+     * Items_value field in *Product Item Detail*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    items_value: prismicT.GroupField<Simplify<ProductItemDetailDocumentDataItemsValueItem>>;
+}
+/**
+ * Item in Product Item Detail → Image
+ *
+ */
+export interface ProductItemDetailDocumentDataImageItem {
+    /**
+     * Image field in *Product Item Detail → Image*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.image[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Item in Product Item Detail → Items_value
+ *
+ */
+export interface ProductItemDetailDocumentDataItemsValueItem {
+    /**
+     * Origin field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].origin
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    origin: prismicT.KeyTextField;
+    /**
+     * Process field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].process
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    process: prismicT.KeyTextField;
+    /**
+     * Coffe Character field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].coffe_character
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    coffe_character: prismicT.KeyTextField;
+    /**
+     * Crop field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].crop
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    crop: prismicT.KeyTextField;
+    /**
+     * Altitude field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].altitude
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    altitude: prismicT.KeyTextField;
+    /**
+     * Moisture Level field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].moisture_level
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    moisture_level: prismicT.KeyTextField;
+    /**
+     * Grade field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].grade
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    grade: prismicT.KeyTextField;
+    /**
+     * Defect Rate field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].defect_rate
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    defect_rate: prismicT.KeyTextField;
+}
+/**
+ * Product Item Detail document from Prismic
+ *
+ * - **API ID**: `product_item_detail`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductItemDetailDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProductItemDetailDocumentData>, "product_item_detail", Lang>;
+/** Content for Product Items documents */
+interface ProductItemsDocumentData {
+    /**
+     * Product Name field in *Product Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_items.product_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    product_name: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Product Items*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_items.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<ProductItemsDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Product Items → Slice Zone*
+ *
+ */
+type ProductItemsDocumentDataSlicesSlice = ProductItemsSlice;
+/**
+ * Product Items document from Prismic
+ *
+ * - **API ID**: `product_items`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductItemsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProductItemsDocumentData>, "product_items", Lang>;
+/** Content for Products Navigation documents */
+interface ProductsListDocumentData {
+    /**
+     * Product List field in *Products Navigation*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: products_list.product_list[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    product_list: prismicT.GroupField<Simplify<ProductsListDocumentDataProductListItem>>;
+}
+/**
+ * Item in Products Navigation → Product List
+ *
+ */
+export interface ProductsListDocumentDataProductListItem {
+    /**
+     * Title field in *Products Navigation → Product List*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: products_list.product_list[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Product Link field in *Products Navigation → Product List*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: products_list.product_list[].product_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    product_link: prismicT.RelationField<"product_items">;
+}
+/**
+ * Products Navigation document from Prismic
+ *
+ * - **API ID**: `products_list`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductsListDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ProductsListDocumentData>, "products_list", Lang>;
 /** Content for Settings documents */
 interface SettingsDocumentData {
     /**
@@ -182,7 +457,7 @@ interface SettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
-export type AllDocumentTypes = ArticleItemDocument | NavigationDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes = ArticleItemDocument | NavigationDocument | PageDocument | ProductItemDetailDocument | ProductItemsDocument | ProductsListDocument | SettingsDocument;
 /**
  * Primary content in ArticleCards → Primary
  *
@@ -595,6 +870,65 @@ type MainCarouselSliceVariation = MainCarouselSliceDefault;
  */
 export type MainCarouselSlice = prismicT.SharedSlice<"main_carousel", MainCarouselSliceVariation>;
 /**
+ * Item in ProductItems → Items
+ *
+ */
+export interface ProductItemsSliceDefaultItem {
+    /**
+     * Title field in *ProductItems → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_items.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Image field in *ProductItems → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_items.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Link field in *ProductItems → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_items.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.RelationField<"product_item_detail">;
+}
+/**
+ * Default variation for ProductItems Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ProductItems`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProductItemsSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<ProductItemsSliceDefaultItem>>;
+/**
+ * Slice variation for *ProductItems*
+ *
+ */
+type ProductItemsSliceVariation = ProductItemsSliceDefault;
+/**
+ * ProductItems Shared Slice
+ *
+ * - **API ID**: `product_items`
+ * - **Description**: `ProductItems`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProductItemsSlice = prismicT.SharedSlice<"product_items", ProductItemsSliceVariation>;
+/**
  * Primary content in Quote → Primary
  *
  */
@@ -914,6 +1248,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleItemDocumentData, ArticleItemDocumentDataSlicesSlice, ArticleItemDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ArticleCardsSliceDefaultPrimary, ArticleCardsSliceDefaultItem, ArticleCardsSliceDefault, ArticleCardsSliceVariation, ArticleCardsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { ArticleItemDocumentData, ArticleItemDocumentDataSlicesSlice, ArticleItemDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocumentDataProductListItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProductItemDetailDocumentData, ProductItemDetailDocumentDataImageItem, ProductItemDetailDocumentDataItemsValueItem, ProductItemDetailDocument, ProductItemsDocumentData, ProductItemsDocumentDataSlicesSlice, ProductItemsDocument, ProductsListDocumentData, ProductsListDocumentDataProductListItem, ProductsListDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ArticleCardsSliceDefaultPrimary, ArticleCardsSliceDefaultItem, ArticleCardsSliceDefault, ArticleCardsSliceVariation, ArticleCardsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, ProductItemsSliceDefaultItem, ProductItemsSliceDefault, ProductItemsSliceVariation, ProductItemsSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
     }
 }

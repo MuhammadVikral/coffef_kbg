@@ -12,15 +12,14 @@ import RichText from "../../components/RichText";
  * @param { ArticleCardsProps }
  */
 const ImageCard = ({ item }) => {
-  const image = item.article_image;
-  const title = item.article_title;
-  const desc = item.article_description;
-  const linkNav = item.article_child;
-
+  const image = item.image;
+  const title = item.title;
+  const linkNav = "/detail/" + item.link.uid;
+  console.log(item.link.uid);
   return (
     <div className="flex justify-center">
       <div className="block max-w-sm rounded-lg bg-white shadow-lg duration-500 hover:scale-110 dark:bg-neutral-700">
-        <a href={linkNav.url}>
+        <a href={linkNav}>
           <img
             className="w-full cursor-pointer rounded-t-lg object-cover transition "
             src={image.url}
@@ -31,10 +30,7 @@ const ImageCard = ({ item }) => {
           <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             {title}
           </h5>
-          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-            {desc}
-          </p>
-          <a href={linkNav.url}>
+          <a href={linkNav}>
             <button
               type="button"
               className="hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block rounded bg-blue-500 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
@@ -49,7 +45,7 @@ const ImageCard = ({ item }) => {
     </div>
   );
 };
-const ArticleCards = ({ slice }) => (
+const ProductItems = ({ slice }) => (
   <Bounded as="section" className="">
     <div className="grid gap-12">
       {prismicH.isFilled.richText(slice.primary.heading) && (
@@ -66,4 +62,4 @@ const ArticleCards = ({ slice }) => (
   </Bounded>
 );
 
-export default ArticleCards;
+export default ProductItems;

@@ -1,0 +1,104 @@
+{
+  "id": "product_item_detail",
+  "label": "Product Item Detail",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "id",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Group",
+        "config": {
+          "label": "Image",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "items_value": {
+        "type": "Group",
+        "config": {
+          "label": "Items_value",
+          "fields": {
+            "origin": {
+              "type": "Text",
+              "config": {
+                "label": "Origin",
+                "placeholder": ""
+              }
+            },
+            "process": {
+              "type": "Text",
+              "config": {
+                "label": "Process",
+                "placeholder": ""
+              }
+            },
+            "coffe_character": {
+              "type": "Text",
+              "config": {
+                "label": "Coffe Character",
+                "placeholder": ""
+              }
+            },
+            "crop": {
+              "type": "Text",
+              "config": {
+                "label": "Crop",
+                "placeholder": ""
+              }
+            },
+            "altitude": {
+              "type": "Text",
+              "config": {
+                "label": "Altitude",
+                "placeholder": ""
+              }
+            },
+            "moisture_level": {
+              "type": "Text",
+              "config": {
+                "label": "Moisture Level",
+                "placeholder": ""
+              }
+            },
+            "grade": {
+              "type": "Text",
+              "config": {
+                "label": "Grade",
+                "placeholder": ""
+              }
+            },
+            "defect_rate": {
+              "type": "Text",
+              "config": {
+                "label": "Defect Rate",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

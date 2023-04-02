@@ -102,6 +102,12 @@
       "default": {
         "primary": {}
       }
+    },
+    "ProductItems": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   },
   "_cts": {
@@ -115,6 +121,13 @@
     },
     "navigation": {},
     "settings": {},
-    "article_item": {}
+    "article_item": {},
+    "products_list": {
+      "product_list": {}
+    },
+    "product_items": {},
+    "product_item_detail": {
+      "items_value": {}
+    }
   }
 }

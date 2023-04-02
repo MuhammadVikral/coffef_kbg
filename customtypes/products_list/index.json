@@ -1,0 +1,35 @@
+{
+  "id": "products_list",
+  "label": "Products Navigation",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "product_list": {
+        "type": "Group",
+        "config": {
+          "label": "Product List",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "product_link": {
+              "type": "Link",
+              "config": {
+                "label": "Product Link",
+                "select": "document",
+                "customtypes": [
+                  "product_items"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
