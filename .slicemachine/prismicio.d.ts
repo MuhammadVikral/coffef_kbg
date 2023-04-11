@@ -184,7 +184,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | RowButtonSlice | MainCarouselSlice | ArticleCardsSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | QuoteSlice | TextSlice | ImageSlice | ImageCardsSlice | TextWithImageSlice | HomeAboutUsSlice | RowButtonSlice | MainCarouselSlice | ArticleCardsSlice | TilingWordImageSlice;
 /**
  * Page document from Prismic
  *
@@ -831,6 +831,22 @@ type ImageCardsSliceVariation = ImageCardsSliceDefault;
  */
 export type ImageCardsSlice = prismicT.SharedSlice<"image_cards", ImageCardsSliceVariation>;
 /**
+ * Primary content in MainCarousel → Primary
+ *
+ */
+interface MainCarouselSliceDefaultPrimary {
+    /**
+     * Quote field in *MainCarousel → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_carousel.primary.quote
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    quote: prismicT.RichTextField;
+}
+/**
  * Item in MainCarousel → Items
  *
  */
@@ -854,7 +870,7 @@ export interface MainCarouselSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type MainCarouselSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<MainCarouselSliceDefaultItem>>;
+export type MainCarouselSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<MainCarouselSliceDefaultPrimary>, Simplify<MainCarouselSliceDefaultItem>>;
 /**
  * Slice variation for *MainCarousel*
  *
@@ -1243,11 +1259,76 @@ type TextWithImageSliceVariation = TextWithImageSliceDefault | TextWithImageSlic
  *
  */
 export type TextWithImageSlice = prismicT.SharedSlice<"text_with_image", TextWithImageSliceVariation>;
+/**
+ * Primary content in TilingWordImage → Primary
+ *
+ */
+interface TilingWordImageSliceDefaultPrimary {
+    /**
+     * Text Background field in *TilingWordImage → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tiling_word_image.primary.text_background
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    text_background: prismicT.ColorField;
+}
+/**
+ * Item in TilingWordImage → Items
+ *
+ */
+export interface TilingWordImageSliceDefaultItem {
+    /**
+     * Image field in *TilingWordImage → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tiling_word_image.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Description field in *TilingWordImage → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tiling_word_image.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for TilingWordImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TilingWordImage`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TilingWordImageSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TilingWordImageSliceDefaultPrimary>, Simplify<TilingWordImageSliceDefaultItem>>;
+/**
+ * Slice variation for *TilingWordImage*
+ *
+ */
+type TilingWordImageSliceVariation = TilingWordImageSliceDefault;
+/**
+ * TilingWordImage Shared Slice
+ *
+ * - **API ID**: `tiling_word_image`
+ * - **Description**: `TilingWordImage`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TilingWordImageSlice = prismicT.SharedSlice<"tiling_word_image", TilingWordImageSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleItemDocumentData, ArticleItemDocumentDataSlicesSlice, ArticleItemDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocumentDataProductListItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProductItemDetailDocumentData, ProductItemDetailDocumentDataImageItem, ProductItemDetailDocumentDataItemsValueItem, ProductItemDetailDocument, ProductItemsDocumentData, ProductItemsDocumentDataSlicesSlice, ProductItemsDocument, ProductsListDocumentData, ProductsListDocumentDataProductListItem, ProductsListDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ArticleCardsSliceDefaultPrimary, ArticleCardsSliceDefaultItem, ArticleCardsSliceDefault, ArticleCardsSliceVariation, ArticleCardsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, ProductItemsSliceDefaultItem, ProductItemsSliceDefault, ProductItemsSliceVariation, ProductItemsSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { ArticleItemDocumentData, ArticleItemDocumentDataSlicesSlice, ArticleItemDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocumentDataProductListItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProductItemDetailDocumentData, ProductItemDetailDocumentDataImageItem, ProductItemDetailDocumentDataItemsValueItem, ProductItemDetailDocument, ProductItemsDocumentData, ProductItemsDocumentDataSlicesSlice, ProductItemsDocument, ProductsListDocumentData, ProductsListDocumentDataProductListItem, ProductsListDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ArticleCardsSliceDefaultPrimary, ArticleCardsSliceDefaultItem, ArticleCardsSliceDefault, ArticleCardsSliceVariation, ArticleCardsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, HomeAboutUsSliceDefaultPrimary, HomeAboutUsSliceDefault, HomeAboutUsSliceVariation, HomeAboutUsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceBannerPrimary, ImageSliceBanner, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, MainCarouselSliceDefaultPrimary, MainCarouselSliceDefaultItem, MainCarouselSliceDefault, MainCarouselSliceVariation, MainCarouselSlice, ProductItemsSliceDefaultItem, ProductItemsSliceDefault, ProductItemsSliceVariation, ProductItemsSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, RowButtonSliceDefaultPrimary, RowButtonSliceDefault, RowButtonSliceVariation, RowButtonSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceVariation, TextSlice, TextWithHeaderSliceDefaultPrimary, TextWithHeaderSliceDefault, TextWithHeaderSliceVariation, TextWithHeaderSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice, TilingWordImageSliceDefaultPrimary, TilingWordImageSliceDefaultItem, TilingWordImageSliceDefault, TilingWordImageSliceVariation, TilingWordImageSlice };
     }
 }

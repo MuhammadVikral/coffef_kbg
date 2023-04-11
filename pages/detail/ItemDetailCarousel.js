@@ -10,7 +10,6 @@ export const ItemDetailCarousel = ({ items }) => {
         infiniteLoop={true}
         showThumbs={true}
         dynamicHeight={false}
-        autoPlay={true}
         showStatus={false}
         className=" align-center w-[34.5vw] justify-center rounded-xl"
       >

@@ -13,7 +13,7 @@ const HomeAboutUs = ({ slice }) => {
   const image = slice.primary.image;
   const backgroundImage = slice.primary.background_image;
   return (
-    <section className="relative  h-screen pb-12 text-white">
+    <section className="relative  pb-12 text-white">
       {prismicH.isFilled.image(backgroundImage) && (
         <PrismicNextImage
           field={backgroundImage}
@@ -22,11 +22,11 @@ const HomeAboutUs = ({ slice }) => {
           className="pointer-events-none select-none object-cover "
         />
       )}
-      <div className="mx-24 grid grid-cols-1 items-center justify-end gap-8 py-24 md:grid-cols-2">
+      <div className="mx-8 grid grid-cols-1 items-center justify-end gap-8 pb-12 md:mx-24 md:grid-cols-2">
         <div>
           <RichText
             field={slice.primary.text}
-            className="text-left text-white"
+            className="text-center text-white"
           />
         </div>
         <div>
@@ -35,7 +35,7 @@ const HomeAboutUs = ({ slice }) => {
               <img
                 src={image.url}
                 alt={image.alt}
-                className="h-3/6 w-full rounded-xl"
+                className="h-1/2 w-full flex-auto rounded-xl"
               />
             </div>
           )}

@@ -12,6 +12,7 @@ import RowButton from './RowButton';
 import Text from './Text';
 import TextWithHeader from './TextWithHeader';
 import TextWithImage from './TextWithImage';
+import TilingWordImage from './TilingWordImage';
 
 export {
 	ArticleCards,
@@ -26,6 +27,7 @@ export {
 	Text,
 	TextWithHeader,
 	TextWithImage,
+	TilingWordImage,
 };
 
 export const components = {
@@ -41,4 +43,5 @@ export const components = {
 	text: Text,
 	text_with_header: TextWithHeader,
 	text_with_image: TextWithImage,
+	tiling_word_image: TilingWordImage,
 };

@@ -95,7 +95,8 @@
     },
     "MainCarousel": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     },
     "ArticleCards": {
@@ -107,6 +108,11 @@
       "default": {
         "primary": {},
         "items": {}
+      }
+    },
+    "TilingWordImage": {
+      "default": {
+        "primary": {}
       }
     }
   },

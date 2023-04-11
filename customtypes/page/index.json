@@ -65,6 +65,9 @@
             },
             "article_cards": {
               "type": "SharedSlice"
+            },
+            "tiling_word_image": {
+              "type": "SharedSlice"
             }
           }
         }

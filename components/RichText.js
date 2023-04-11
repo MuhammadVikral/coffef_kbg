@@ -1,9 +1,9 @@
 import { PrismicRichText } from "@prismicio/react";
 
-const RichText = ({ field, className }) => {
+const RichText = ({ field, className, style }) => {
   return (
     field && (
-      <div className={className}>
+      <div className={className} style={style}>
         <PrismicRichText field={field} />
       </div>
     )

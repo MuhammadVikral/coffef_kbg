@@ -9,24 +9,18 @@ import { PrismicLink, PrismicText } from "@prismicio/react";
  */
 const RowButton = ({ slice }) => {
   return (
-    <section class="flex pl-[30vw] pt-[35vh] ">
-      <Grid.Container>
-        <Grid class="">
-          <a href={slice.primary.gohome.url} class="mr-[15vw]">
-            <button class="h-[7vh] w-[10vw] rounded border border-gray-400 bg-white   font-semibold text-gray-800 shadow hover:bg-gray-100">
-              About Us
-            </button>
-          </a>
-        </Grid>
-        <Grid>
-          <a href={slice.primary.gocontact.url}>
-            <button class="h-[7vh] w-[10vw] rounded border border-gray-400 bg-white   font-semibold text-gray-800 shadow hover:bg-gray-100">
-              Contact Us
-            </button>
-          </a>
-        </Grid>
-      </Grid.Container>
-    </section>
+    <div className="align-center z-10 mt-12 flex flex-row justify-center gap-8 md:grid-rows-6 md:gap-60">
+      <a href={slice.primary.gohome.url}>
+        <button className="semibold h-16 w-28  flex-1 rounded border border-gray-400 bg-white text-gray-800 shadow hover:bg-gray-100  md:w-48">
+          About Us
+        </button>
+      </a>
+      <a href={slice.primary.gocontact.url}>
+        <button className="h-16 w-28 flex-1 rounded border border-gray-400  bg-white font-semibold text-gray-800 shadow hover:bg-gray-100 md:w-48">
+          Contact Us
+        </button>
+      </a>
+    </div>
   );
 };
 

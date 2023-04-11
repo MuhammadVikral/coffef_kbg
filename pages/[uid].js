@@ -6,8 +6,7 @@ import { createClient } from "../prismicio";
 import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
-const Page = ({ page, navigation, settings, product }) => {
-  console.log("product:", product);
+const Page = ({ page, navigation, settings }) => {
   return (
     <div
       className="bg-black  bg-cover bg-no-repeat pt-24"
@@ -15,7 +14,7 @@ const Page = ({ page, navigation, settings, product }) => {
         backgroundImage: `url('/images/bgblack.jpg')`,
       }}
     >
-      <Layout navigation={navigation} settings={settings} product={product}>
+      <Layout navigation={navigation} settings={settings}>
         <Head>
           <title>
             {prismicH.asText(page.data.title)} |{" "}
@@ -36,13 +35,11 @@ export async function getStaticProps({ params, locale, previewData }) {
   const page = await client.getByUID("page", params.uid, { lang: locale });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
-  const product = await client.getSingle("products_list", { lang: locale });
   return {
     props: {
       page,
       navigation,
       settings,
-      product,
     },
   };
 }

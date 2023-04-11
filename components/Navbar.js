@@ -6,14 +6,14 @@ import * as prismicH from "@prismicio/helpers";
 import { Menu } from "@headlessui/react";
 import { Fragment } from "react";
 
-export const Navbar = ({ navigation, product }) => {
+export const Navbar = ({ navigation }) => {
   const [nav, setNav] = useState(false);
   const [pageIndex, setPageIndex] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
   const [textFontHome, setTextFontHome] = useState("font-bold");
   const [hideProduct, setHideProduct] = useState("hidden");
-
+  const product = navigation.data.product_list;
   const handleNav = () => {
     setNav(!nav);
   };
@@ -39,7 +39,7 @@ export const Navbar = ({ navigation, product }) => {
   return (
     <div
       style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 z-10 w-full px-24 duration-300 ease-in"
+      className="fixed left-0 top-0 z-10 w-full duration-300 ease-in md:px-24"
     >
       <div className="  flex items-center justify-between p-4 text-white">
         <Link href="/">
@@ -52,11 +52,27 @@ export const Navbar = ({ navigation, product }) => {
           style={{ color: `${textColor}` }}
           className="hidden text-lg sm:flex"
         >
+          {navigation.data?.links.map((item, index) => {
+            let fontstyle = "font-bold";
+            return (
+              <div onClick={() => setPageIndex({ index })}>
+                <li
+                  key={prismicH.asText(item.label)}
+                  className="p4 ml-5 font-bold"
+                >
+                  <PrismicLink field={item.link}>
+                    <PrismicText field={item.label} />
+                  </PrismicLink>
+                </li>
+              </div>
+            );
+          })}
           <Menu as="div" className="relative inline-block text-left">
             <Menu.Button className="p4 ml-5 font-bold">Product</Menu.Button>
             <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              {product.data?.product_list.map((item) => {
-                let url = "/product/" + item.product_link.uid;
+              {product.map((item) => {
+                console.log(item);
+                let url = "/product/" + item.link.uid;
                 return (
                   <Menu.Item>
                     {({ active }) => (
@@ -77,21 +93,6 @@ export const Navbar = ({ navigation, product }) => {
               })}
             </Menu.Items>
           </Menu>
-          {navigation.data?.links.map((item, index) => {
-            let fontstyle = "font-bold";
-            return (
-              <div onClick={() => setPageIndex({ index })}>
-                <li
-                  key={prismicH.asText(item.label)}
-                  className="p4 ml-5 font-bold"
-                >
-                  <PrismicLink field={item.link}>
-                    <PrismicText field={item.label} />
-                  </PrismicLink>
-                </li>
-              </div>
-            );
-          })}
         </ul>
 
         {/* Mobile Button */}

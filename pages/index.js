@@ -18,12 +18,7 @@ const Index = ({ page, navigation, settings }) => {
     isHome = true;
   }
   return (
-    <div
-      class="h-screen bg-black bg-cover py-12 px-12"
-      style={{
-        backgroundImage: `url('/images/bgblack.jpg')`,
-      }}
-    >
+    <div>
       <Layout navigation={navigation} settings={settings} isHome={isHome}>
         <Head>
           <title>{prismicH.asText(page.data.title)}</title>

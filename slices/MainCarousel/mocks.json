@@ -2,7 +2,19 @@
   {
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
-    "primary": {},
+    "primary": {
+      "quote": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Velit quis enim laborum et quis officia ex esse duis ullamco elit magna excepteur cupidatat qui. Dolore ipsum laborum voluptate laboris sunt sint labore excepteur in exercitation do dolore."
+            }
+          }
+        ]
+      }
+    },
     "items": [
       {
         "__TYPE__": "GroupItemContent",
@@ -10,7 +22,6 @@
           [
             "image",
             {
-              "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
                 "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
@@ -28,6 +39,9 @@
                 },
                 "background": "transparent"
               },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
               "thumbnails": {}
             }
           ]
