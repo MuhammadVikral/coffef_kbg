@@ -62,7 +62,7 @@ export const Footer = () => {
   let mapSource =
     "https://maps.googleapis.com/maps/api/staticmap?@-6.2170231,106.7660417,17z";
   return (
-    <footer className="   bg-gray-800 text-center text-neutral-600    lg:text-left">
+    <footer className="   bg-gray-700 text-center text-neutral-600    lg:text-left">
       <div className="py-10 px-12  text-center md:px-24 md:text-left">
         <FooterContentLayout />
       </div>

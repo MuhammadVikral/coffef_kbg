@@ -19,6 +19,13 @@
           "placeholder": ""
         }
       },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
       "image": {
         "type": "Group",
         "config": {
@@ -47,17 +54,10 @@
                 "placeholder": ""
               }
             },
-            "process": {
+            "processing_method": {
               "type": "Text",
               "config": {
-                "label": "Process",
-                "placeholder": ""
-              }
-            },
-            "coffe_character": {
-              "type": "Text",
-              "config": {
-                "label": "Coffe Character",
+                "label": "Processing Method",
                 "placeholder": ""
               }
             },
@@ -75,10 +75,10 @@
                 "placeholder": ""
               }
             },
-            "moisture_level": {
+            "variant": {
               "type": "Text",
               "config": {
-                "label": "Moisture Level",
+                "label": "Variant",
                 "placeholder": ""
               }
             },
@@ -89,10 +89,31 @@
                 "placeholder": ""
               }
             },
+            "screen_size": {
+              "type": "Text",
+              "config": {
+                "label": "Screen Size",
+                "placeholder": ""
+              }
+            },
             "defect_rate": {
               "type": "Text",
               "config": {
                 "label": "Defect Rate",
+                "placeholder": ""
+              }
+            },
+            "coffe_notes": {
+              "type": "Text",
+              "config": {
+                "label": "Coffe notes",
+                "placeholder": ""
+              }
+            },
+            "coffe_character": {
+              "type": "Text",
+              "config": {
+                "label": "Coffe Character",
                 "placeholder": ""
               }
             }

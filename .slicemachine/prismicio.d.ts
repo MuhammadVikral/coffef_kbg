@@ -209,6 +209,17 @@ interface ProductItemDetailDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
+     * Description field in *Product Item Detail*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
      * Image field in *Product Item Detail*
      *
      * - **Field Type**: Group
@@ -263,25 +274,15 @@ export interface ProductItemDetailDocumentDataItemsValueItem {
      */
     origin: prismicT.KeyTextField;
     /**
-     * Process field in *Product Item Detail → Items_value*
+     * Processing Method field in *Product Item Detail → Items_value*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: product_item_detail.items_value[].process
+     * - **API ID Path**: product_item_detail.items_value[].processing_method
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    process: prismicT.KeyTextField;
-    /**
-     * Coffe Character field in *Product Item Detail → Items_value*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: product_item_detail.items_value[].coffe_character
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    coffe_character: prismicT.KeyTextField;
+    processing_method: prismicT.KeyTextField;
     /**
      * Crop field in *Product Item Detail → Items_value*
      *
@@ -303,15 +304,15 @@ export interface ProductItemDetailDocumentDataItemsValueItem {
      */
     altitude: prismicT.KeyTextField;
     /**
-     * Moisture Level field in *Product Item Detail → Items_value*
+     * Variant field in *Product Item Detail → Items_value*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: product_item_detail.items_value[].moisture_level
+     * - **API ID Path**: product_item_detail.items_value[].variant
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    moisture_level: prismicT.KeyTextField;
+    variant: prismicT.KeyTextField;
     /**
      * Grade field in *Product Item Detail → Items_value*
      *
@@ -323,6 +324,16 @@ export interface ProductItemDetailDocumentDataItemsValueItem {
      */
     grade: prismicT.KeyTextField;
     /**
+     * Screen Size field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].screen_size
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    screen_size: prismicT.KeyTextField;
+    /**
      * Defect Rate field in *Product Item Detail → Items_value*
      *
      * - **Field Type**: Text
@@ -332,6 +343,26 @@ export interface ProductItemDetailDocumentDataItemsValueItem {
      *
      */
     defect_rate: prismicT.KeyTextField;
+    /**
+     * Coffe notes field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].coffe_notes
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    coffe_notes: prismicT.KeyTextField;
+    /**
+     * Coffe Character field in *Product Item Detail → Items_value*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: product_item_detail.items_value[].coffe_character
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    coffe_character: prismicT.KeyTextField;
 }
 /**
  * Product Item Detail document from Prismic

@@ -10,12 +10,13 @@ import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { ItemDetailCarousel } from "./ItemDetailCarousel";
 import { ItemValue } from "./ItemValue";
+import { PopupButton } from "./PopupButton";
 import Link from "next/link";
-
+import Popup from "reactjs-popup";
 const Page = ({ page, navigation, settings, product }) => {
   let items = page.data.image;
   return (
-    <section>
+    <section className="relative">
       <div
         className="  bg-black bg-cover bg-no-repeat py-24"
         style={{
@@ -28,6 +29,7 @@ const Page = ({ page, navigation, settings, product }) => {
           <ItemValue item={page.data} />
         </div>
       </div>
+      <PopupButton />
       <div>
         <Footer />
       </div>
