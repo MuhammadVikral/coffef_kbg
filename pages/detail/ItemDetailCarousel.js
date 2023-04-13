@@ -11,7 +11,7 @@ export const ItemDetailCarousel = ({ items }) => {
         showThumbs={true}
         dynamicHeight={false}
         showStatus={false}
-        className=" align-center w-[34.5vw] justify-center rounded-xl"
+        className=" align-center w-full justify-center rounded-xl px-8 md:w-[34.5vw]"
       >
         {items.map((item, i) => (
           <div key={item.image.url} className=" flex h-full w-full  ">

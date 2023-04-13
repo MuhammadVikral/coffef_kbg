@@ -23,7 +23,7 @@ const Page = ({ page, navigation, settings, product }) => {
         }}
       >
         <Navbar navigation={navigation} product={product} />
-        <div className="grid grid-cols-[max-content_1fr] gap-x-4 px-24">
+        <div className="grid gap-x-4  md:grid-cols-[max-content_1fr] md:px-24">
           <ItemDetailCarousel items={items} />
           <ItemValue item={page.data} />
         </div>

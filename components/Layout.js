@@ -11,7 +11,7 @@ export const Layout = ({ navigation, settings, children, isHome }) => {
         className="bg-black  bg-repeat px-8 py-12 "
         style={{
           backgroundImage: `url('/images/bgblack.jpg')`,
-          backgroundRepeat: "repeat-y",
+          backgroundRepeat: "repeat",
         }}
       >
         <Link href="/">

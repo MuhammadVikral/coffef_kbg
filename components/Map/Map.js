@@ -17,7 +17,7 @@ export default function Map() {
 
   return (
     <MapContainer
-      className={"h-48 w-full"}
+      className={"h-48 w-full "}
       center={position}
       zoom={20}
       scrollWheelZoom={false}
