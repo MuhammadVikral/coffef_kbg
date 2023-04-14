@@ -6,6 +6,89 @@ import * as prismicH from "@prismicio/helpers";
 import { Menu } from "@headlessui/react";
 import { Fragment } from "react";
 
+const StandarNavbarItem = ({ item, onClick }) => {
+  return (
+    <div onClick={onClick}>
+      <li key={prismicH.asText(item.label)} className="p4 ml-5 font-bold">
+        <PrismicLink field={item.link}>
+          <PrismicText field={item.label} />
+        </PrismicLink>
+      </li>
+    </div>
+  );
+};
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+const ProductItem = ({ product }) => {
+  return (
+    <Menu as="div" className="relative inline-block text-left">
+      <Menu.Button className="p4 ml-5 font-bold">Product</Menu.Button>
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        {product.map((item) => {
+          console.log(item);
+          let url = "/product/" + item.link.uid;
+          return (
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href={url}
+                  className={classNames(
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  {item.title}
+                </a>
+              )}
+            </Menu.Item>
+          );
+        })}
+      </Menu.Items>
+    </Menu>
+  );
+};
+const MobileNavbarItem = ({ item, onClick }) => {
+  return (
+    <li onClick={onClick} className="p-4 text-4xl hover:text-gray-500">
+      <PrismicLink field={item.link}>
+        <PrismicText field={item.label} />
+      </PrismicLink>
+    </li>
+  );
+};
+
+const ProductItemMobile = ({ product }) => {
+  return (
+    <Menu as="div" className="relative inline-block text-left">
+      <Menu.Button className="p-4 text-4xl hover:text-gray-500">
+        Product
+      </Menu.Button>
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        {product.map((item) => {
+          console.log(item);
+          let url = "/product/" + item.link.uid;
+          return (
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href={url}
+                  className={classNames(
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  {item.title}
+                </a>
+              )}
+            </Menu.Item>
+          );
+        })}
+      </Menu.Items>
+    </Menu>
+  );
+};
 export const Navbar = ({ navigation }) => {
   const [nav, setNav] = useState(false);
   const [pageIndex, setPageIndex] = useState(false);
@@ -32,9 +115,6 @@ export const Navbar = ({ navigation }) => {
     };
     window.addEventListener("scroll", changeColor);
   }, []);
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   return (
     <div
@@ -52,47 +132,19 @@ export const Navbar = ({ navigation }) => {
           style={{ color: `${textColor}` }}
           className="hidden text-lg sm:flex"
         >
-          {navigation.data?.links.map((item, index) => {
-            let fontstyle = "font-bold";
-            return (
-              <div onClick={() => setPageIndex({ index })}>
-                <li
-                  key={prismicH.asText(item.label)}
-                  className="p4 ml-5 font-bold"
-                >
-                  <PrismicLink field={item.link}>
-                    <PrismicText field={item.label} />
-                  </PrismicLink>
-                </li>
-              </div>
-            );
-          })}
-          <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button className="p4 ml-5 font-bold">Product</Menu.Button>
-            <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              {product.map((item) => {
-                console.log(item);
-                let url = "/product/" + item.link.uid;
-                return (
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href={url}
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        {item.title}
-                      </a>
-                    )}
-                  </Menu.Item>
-                );
-              })}
-            </Menu.Items>
-          </Menu>
+          <StandarNavbarItem
+            item={navigation.data.links[0]}
+            onClick={() => setPageIndex(0)}
+          />
+          <ProductItem product={product} />
+          <StandarNavbarItem
+            item={navigation.data.links[1]}
+            onClick={() => setPageIndex(1)}
+          />
+          <StandarNavbarItem
+            item={navigation.data.links[2]}
+            onClick={() => setPageIndex(2)}
+          />
         </ul>
 
         {/* Mobile Button */}
@@ -112,24 +164,19 @@ export const Navbar = ({ navigation }) => {
           }
         >
           <ul>
-            <li
+            <MobileNavbarItem
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/">Home</Link>
-            </li>
-            <li
+              item={navigation.data.links[0]}
+            />
+            <ProductItemMobile product={product} />
+            <MobileNavbarItem
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/#gallery">Product</Link>
-            </li>
-            <li
+              item={navigation.data.links[1]}
+            />
+            <MobileNavbarItem
               onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/work">About Us</Link>
-            </li>
+              item={navigation.data.links[2]}
+            />
           </ul>
         </div>
       </div>

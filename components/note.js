@@ -25,3 +25,18 @@ const uttonLink =
     window.addEventListener("scroll", changeColor);
   }, []);
 
+{navigation.data?.links.map((item, index) => {
+            let fontstyle = "font-bold";
+            return (
+              <div onClick={() => setPageIndex({ index })}>
+                <li
+                  key={prismicH.asText(item.label)}
+                  className="p4 ml-5 font-bold"
+                >
+                  <PrismicLink field={item.link}>
+                    <PrismicText field={item.label} />
+                  </PrismicLink>
+                </li>
+              </div>
+            );
+          })}
