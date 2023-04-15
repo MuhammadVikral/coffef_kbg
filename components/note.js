@@ -40,3 +40,34 @@ const uttonLink =
               </div>
             );
           })}
+
+
+
+const ProductItem = ({ product }) => {
+  return (
+    <Menu as="div" className="relative inline-block text-left">
+      <Menu.Button className="p4 ml-5 font-bold">Product</Menu.Button>
+      <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        {product.map((item) => {
+          console.log(item);
+          let url = "/product/" + item.link.uid;
+          return (
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href={url}
+                  className={classNames(
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  {item.title}
+                </a>
+              )}
+            </Menu.Item>
+          );
+        })}
+      </Menu.Items>
+    </Menu>
+  );
+};

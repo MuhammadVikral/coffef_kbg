@@ -4,7 +4,7 @@ import { ContactForm } from "../components/ContactForm";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
-const page = ({ page, navigation, settings }) => {
+const page = ({ page, navigation, settings, products }) => {
   return (
     <div
       className="bg-black bg-cover bg-no-repeat "
@@ -12,7 +12,7 @@ const page = ({ page, navigation, settings }) => {
         backgroundImage: `url('/images/bgblack.jpg')`,
       }}
     >
-      <ContactForm />
+      <ContactForm products={products} />
       <Navbar navigation={navigation} />
       <Footer />
     </div>
@@ -26,12 +26,16 @@ export async function getStaticProps({ params, locale, previewData }) {
   const page = await client.getByUID("page", "contact", { lang: locale });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
+  const products = await client.getAllByType("product_item_detail", {
+    lang: locale,
+  });
 
   return {
     props: {
       page,
       navigation,
       settings,
+      products,
     },
   };
 }
