@@ -27,9 +27,9 @@ const Page = ({ page, navigation, settings, product }) => {
         <div className="grid gap-x-4  md:grid-cols-[max-content_1fr] md:px-24">
           <ItemDetailCarousel items={items} />
           <ItemValue item={page.data} />
+          <PopupButton />
         </div>
       </div>
-      <PopupButton />
       <div>
         <Footer />
       </div>

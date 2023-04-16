@@ -17,7 +17,7 @@ function Modal({ children, isOpen, handleClose }) {
     <div className="fixed inset-0 z-[999] mt-72 flex h-96 scale-90 flex-col justify-center rounded-xl bg-gray-800 align-middle transition-all md:ml-96 md:w-1/2 md:px-8 md:py-8">
       <button
         onClick={handleClose}
-        className="align-end  mr-4 flex justify-end text-white  md:mt-9"
+        className="align-end  mr-4 flex justify-end text-white  md:mt-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

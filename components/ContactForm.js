@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 export const ContactForm = ({ products }) => {
   return (
     <div className="items-top relative flex min-h-screen justify-center bg-transparent pt-12 dark:bg-gray-900 sm:items-center sm:pt-0">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 sm:px-6 md:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 py-12 sm:px-6 md:grid-cols-2 md:py-24 lg:px-8">
         <ContactHeader />
         <FormList products={products} />
       </div>
@@ -87,8 +87,8 @@ const FormList = ({ products }) => {
         name="tel"
         id="tel"
         pattern="[a-z0-9]{1,15}"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
       />
       <div className="mt-2 flex flex-col">
         <label for="email" className="hidden">

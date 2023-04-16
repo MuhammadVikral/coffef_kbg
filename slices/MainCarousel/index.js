@@ -29,7 +29,7 @@ const MainCarousel = ({ slice }) => {
             <img
               src={item.image.url}
               alt={item.image.alt}
-              className="h-[60vh] w-full rounded-xl object-cover"
+              className="w-full rounded-xl object-cover md:h-[55vh]"
             />
           ))}
         </Carousel>
@@ -38,7 +38,7 @@ const MainCarousel = ({ slice }) => {
         {prismicH.isFilled.richText(slice.primary.quote) && (
           <p
             className={clsx(
-              "text-4xl font-medium italic leading-tight text-white md:text-2xl md:leading-tight",
+              "text-m font-medium italic leading-tight text-white md:px-24 md:text-2xl md:leading-tight",
               !prismicH.isFilled.keyText(slice.primary.source) && "text-center"
             )}
           >
