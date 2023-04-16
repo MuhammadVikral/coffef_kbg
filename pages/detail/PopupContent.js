@@ -23,7 +23,6 @@ export const PopUpContent = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
-  const subject = "?subject=Hello KBG im interested with ";
   const body =
     " Hello my name is " +
     name +
@@ -35,11 +34,7 @@ export const PopUpContent = () => {
     "https://api.whatsapp.com/send?phone=6281214004800&text=" + body;
   return (
     <div className="grid  grid-cols-1 md:grid-cols-1 ">
-      <form
-        className="flex flex-col justify-center p-6"
-        action={mailto}
-        method="post"
-      >
+      <form className="flex flex-col justify-center p-6" target="_blank">
         <MetaContactForm
           title="Full Name"
           type="name"
@@ -66,16 +61,17 @@ export const PopUpContent = () => {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-
-        <div className="flex w-full justify-center md:justify-end">
+      </form>
+      <div className="flex w-full justify-center md:justify-end">
+        <a href={mailto} target="_blank" className="text-white">
           <button
             type="submit"
             className="hover:bg-blue-dark mt-4 w-full justify-center rounded-lg bg-indigo-600 py-3 px-6 font-bold text-white transition duration-300 ease-in-out hover:bg-indigo-500 md:w-32"
           >
             Submit
           </button>
-        </div>
-      </form>
+        </a>
+      </div>
     </div>
   );
 };

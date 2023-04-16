@@ -54,87 +54,95 @@ const FormList = ({ products }) => {
     phoneNumber +
     " and i am interested with " +
     interested;
-  const mailto = "mailto:mvikral@gmail.com" + subject + body;
-  const mailto2 =
-    "mailto:example@example.com&subject=test&body=test%0D%0Atest%0D%0Atest%0D%0A";
-
+  const textWa =
+    "Hello my name is " +
+    name +
+    " and my email is " +
+    email +
+    " and my phone number is " +
+    phoneNumber +
+    " i want to buy " +
+    productState +
+    " and i am interested with " +
+    interested;
+  const mailto =
+    "https://api.whatsapp.com/send?phone=6281214004800&text=" + textWa;
   return (
-    <form
-      action={mailto}
-      method="post"
-      className="flex flex-col justify-center p-6"
-    >
-      <MetaContactForm
-        title="Full Name"
-        type="name"
-        name="name"
-        id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <MetaContactForm
-        title="Email"
-        type="email"
-        name="email"
-        required
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <MetaContactForm
-        title="Telephone Number"
-        type="tel"
-        name="tel"
-        id="tel"
-        pattern="[a-z0-9]{1,15}"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-      />
-      <div className="mt-2 flex flex-col">
-        <label for="email" className="hidden">
-          "Interest
-        </label>
-        <input
-          type="Interest"
-          name="Interest"
-          id="Interest"
-          placeholder="Interest"
+    <div>
+      <form className="flex flex-col justify-center p-6">
+        <MetaContactForm
+          title="Full Name"
+          type="name"
+          name="name"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <MetaContactForm
+          title="Email"
+          type="email"
+          name="email"
+          required
+          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-100 mt-2 h-48 rounded-lg border border-gray-400 bg-white py-3 px-3 font-semibold text-gray-800 focus:border-indigo-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800"
         />
-      </div>
-      <div className="w-100 my-4  rounded-lg border border-gray-400  py-3 px-3 font-semibold text-gray-400 focus:border-indigo-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800">
-        Which of Our Products are you interested in?
-        <div className="gap-1/2 mt-2 grid grid-cols-2">
-          {products.map((product) => (
-            <RadioButtons
-              title={product.data.title}
-              id={product.data.uid}
-              value={product.data.title}
-              onChange={(e) => setProduct(e.target.value)}
-            />
-          ))}
+        <MetaContactForm
+          title="Telephone Number"
+          type="tel"
+          name="tel"
+          id="tel"
+          pattern="[a-z0-9]{1,15}"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <div className="mt-2 flex flex-col">
+          <label for="email" className="hidden">
+            "Interest
+          </label>
+          <input
+            type="Interest"
+            name="Interest"
+            id="Interest"
+            placeholder="Interest"
+            value={interested}
+            onChange={(e) => setInterested(e.target.value)}
+            className="w-100 mt-2 h-48 rounded-lg border border-gray-400 bg-white py-3 px-3 font-semibold text-gray-800 focus:border-indigo-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800"
+          />
         </div>
-        <div className="gap-1/2 mt-2 grid grid-cols-2">
-          {my.map((prod) => (
-            <RadioButtons
-              title={prod.title}
-              id={prod.id}
-              value={prod.title}
-              onChange={(e) => setProduct(e.target.value)}
-            />
-          ))}
+        <div className="w-100 my-4  rounded-lg border border-gray-400  py-3 px-3 font-semibold text-gray-400 focus:border-indigo-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800">
+          Which of Our Products are you interested in?
+          <div className="gap-1/2 mt-2 grid grid-cols-2">
+            {products.map((product) => (
+              <RadioButtons
+                title={product.data.title}
+                id={product.data.uid}
+                value={product.data.title}
+                onChange={(e) => setProduct(e.target.value)}
+              />
+            ))}
+          </div>
+          <div className="gap-1/2 mt-2 grid grid-cols-2">
+            {my.map((prod) => (
+              <RadioButtons
+                title={prod.title}
+                id={prod.id}
+                value={prod.title}
+                onChange={(e) => setProduct(e.target.value)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-
-      <button
-        type="submit"
-        className="hover:bg-blue-dark mt-3 rounded-lg bg-indigo-600 py-3 px-6 font-bold text-white transition duration-300 ease-in-out hover:bg-indigo-500 md:w-32"
-      >
-        Submit
-      </button>
-    </form>
+      </form>
+      <a href={mailto} target="_blank" className="p-6 text-white">
+        <button
+          type="submit"
+          className="hover:bg-blue-dark mt-3 rounded-lg bg-indigo-600 py-3 px-6 font-bold text-white transition duration-300 ease-in-out hover:bg-indigo-500 md:w-32"
+        >
+          Submit
+        </button>
+      </a>
+    </div>
   );
 };
 const RadioButtons = ({ title, id, onChange, value }) => {
