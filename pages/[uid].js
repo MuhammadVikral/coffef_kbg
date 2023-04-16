@@ -7,6 +7,10 @@ import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
 const Page = ({ page, navigation, settings }) => {
+  let isHome = false;
+  if (page.data.title[0].text == "HomePage") {
+    isHome = true;
+  }
   return (
     <div
       className="bg-black  bg-cover bg-no-repeat pt-24"
@@ -14,7 +18,7 @@ const Page = ({ page, navigation, settings }) => {
         backgroundImage: `url('/images/bgblack.jpg')`,
       }}
     >
-      <Layout navigation={navigation} settings={settings}>
+      <Layout navigation={navigation} settings={settings} isHome={isHome}>
         <Head>
           <title>
             {prismicH.asText(page.data.title)} |{" "}

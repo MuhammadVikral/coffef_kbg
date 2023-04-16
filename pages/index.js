@@ -10,10 +10,7 @@ import { RichText } from "../components/RichText";
 import { PrismicNextImage } from "@prismicio/next";
 
 const Index = ({ page, navigation, settings }) => {
-  let slice = page.data.slices;
-  let bgImage = slice[0].primary.backgroundImage;
   let isHome = false;
-  console.log("isHome:", page.data.title[0].text);
   if (page.data.title[0].text == "HomePage") {
     isHome = true;
   }
