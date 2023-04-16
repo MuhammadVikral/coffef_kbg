@@ -15,7 +15,7 @@ const RowButton = ({ slice }) => {
           About Us
         </button>
       </a>
-      <a href={slice.primary.gocontact.url}>
+      <a href="/contact">
         <button className="h-16 w-28 flex-1 rounded border border-gray-400  bg-white font-semibold text-gray-800 shadow hover:bg-gray-100 md:w-48">
           Contact Us
         </button>

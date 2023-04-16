@@ -142,10 +142,11 @@ export const Navbar = ({ navigation }) => {
             item={navigation.data.links[1]}
             onClick={() => setPageIndex(1)}
           />
-          <StandarNavbarItem
-            item={navigation.data.links[2]}
-            onClick={() => setPageIndex(2)}
-          />
+          <div onClick={() => setPageIndex(2)}>
+            <li key="contact" className="p4 ml-5 font-bold">
+              <Link href="/contact">Contact</Link>
+            </li>
+          </div>
         </ul>
 
         {/* Mobile Button */}
@@ -174,10 +175,11 @@ export const Navbar = ({ navigation }) => {
               onClick={handleNav}
               item={navigation.data.links[1]}
             />
-            <MobileNavbarItem
-              onClick={handleNav}
-              item={navigation.data.links[2]}
-            />
+            <div onClick={handleNav}>
+              <li key="contact" className="p-4 text-4xl hover:text-gray-500">
+                <Link href="/contact">Contact</Link>
+              </li>
+            </div>
           </ul>
         </div>
       </div>

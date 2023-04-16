@@ -4,7 +4,7 @@ import { ContactForm } from "../components/ContactForm";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
-const page = ({ page, navigation, settings, products }) => {
+const page = ({ navigation, settings, products }) => {
   return (
     <div
       className="bg-black bg-cover bg-no-repeat "
@@ -23,7 +23,6 @@ export default page;
 export async function getStaticProps({ params, locale, previewData }) {
   const client = createClient({ previewData });
 
-  const page = await client.getByUID("page", "contact", { lang: locale });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
   const products = await client.getAllByType("product_item_detail", {
@@ -32,7 +31,6 @@ export async function getStaticProps({ params, locale, previewData }) {
 
   return {
     props: {
-      page,
       navigation,
       settings,
       products,
