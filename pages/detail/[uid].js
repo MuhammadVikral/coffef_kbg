@@ -8,11 +8,12 @@ import { components } from "../../slices/";
 import { Header } from "../../components/Header";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
-import { ItemDetailCarousel } from "./ItemDetailCarousel";
-import { ItemValue } from "./ItemValue";
-import { PopupButton } from "./PopupButton";
+import { ItemDetailCarousel } from "../../components/ProductDetail/ItemDetailCarousel";
+import { ItemValue } from "../../components/ProductDetail/ItemValue";
+import { PopupButton } from "../../components/ProductDetail/PopupButton";
 import Link from "next/link";
 import Popup from "reactjs-popup";
+
 const Page = ({ page, navigation, settings, product }) => {
   let items = page.data.image;
   return (

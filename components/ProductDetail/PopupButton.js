@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "../../components/Modal/Modal.js";
-import ReactPortal from "../../components/Modal/ReactPortal";
+import Modal from "../Modal/Modal";
+import ReactPortal from "../Modal/ReactPortal";
 import { PopUpContent } from "./PopupContent";
 
 export const PopupButton = () => {

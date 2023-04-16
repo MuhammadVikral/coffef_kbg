@@ -30,9 +30,10 @@ const ProductItem = ({ product }) => {
           console.log(item);
           let url = "/product/" + item.link.uid;
           return (
-            <Menu.Item>
+            <Menu.Item key={product}>
               {({ active }) => (
                 <a
+                  key={active}
                   href={url}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
@@ -70,7 +71,7 @@ const ProductItemMobile = ({ product }) => {
           console.log(item);
           let url = "/product/" + item.link.uid;
           return (
-            <Menu.Item>
+            <Menu.Item key={product}>
               {({ active }) => (
                 <a
                   href={url}

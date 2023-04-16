@@ -98,7 +98,7 @@ const FormList = ({ products }) => {
         />
         <div className="mt-2 flex flex-col">
           <label for="email" className="hidden">
-            "Interest
+            Interest
           </label>
           <input
             type="Interest"
@@ -115,6 +115,7 @@ const FormList = ({ products }) => {
           <div className="gap-1/2 mt-2 grid grid-cols-2">
             {products.map((product) => (
               <RadioButtons
+                key={product}
                 title={product.data.title}
                 id={product.data.uid}
                 value={product.data.title}
@@ -125,6 +126,7 @@ const FormList = ({ products }) => {
           <div className="gap-1/2 mt-2 grid grid-cols-2">
             {my.map((prod) => (
               <RadioButtons
+                key={prod}
                 title={prod.title}
                 id={prod.id}
                 value={prod.title}

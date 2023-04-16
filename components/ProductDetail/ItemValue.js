@@ -16,7 +16,10 @@ export const ItemValue = ({ item }) => {
                 <tbody>
                   {map.map((value) => {
                     return (
-                      <tr className=" border-b dark:border-neutral-500">
+                      <tr
+                        key={value}
+                        className="border-b dark:border-neutral-500"
+                      >
                         <td className="whitespace-nowrap border-r pr-4   font-medium">
                           {value.split("*")[0]}
                         </td>
