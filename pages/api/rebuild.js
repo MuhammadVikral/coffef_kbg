@@ -1,29 +1,35 @@
 import { exec } from "child_process";
+import express from "express";
 
-export default async function handler(req, res) {
-  const webhookSecret = process.env.WEBHOOK_SECRET;
+const app = express();
+const webhookSecret = process.env.WEBHOOK_SECRET;
+
+// Set up a route to handle incoming webhook requests
+app.post("/webhook", (req, res) => {
   const requestToken = req.headers["x-webhook-token"];
 
-  if (req.method === "POST") {
-    if (requestToken !== webhookSecret) {
-      res.status(401).json({ message: "Unauthorized" });
-      return;
+  if (requestToken !== webhookSecret) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  // Run the rebuild script as a child process
+  exec("npm run rebuild", (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return res.status(500).json({ message: "Error rebuilding the app" });
+    }
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      return res.status(500).json({ message: "Error rebuilding the app" });
     }
 
-    exec("node scripts/rebuild.js", (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: \${error.message}`);
-        return;
-      }
-      if (stderr) {
-        console.error(`Stderr: \${stderr}`);
-        return;
-      }
-      console.log(`Stdout: \${stdout}`);
-    });
+    console.log(`Rebuild successful: ${stdout}`);
+    return res.status(200).json({ message: "Rebuild triggered successfully" });
+  });
+});
 
-    res.status(200).json({ message: "Rebuild triggered" });
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
-  }
-}
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

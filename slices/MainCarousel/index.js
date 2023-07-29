@@ -35,15 +35,16 @@ const MainCarousel = ({ slice }) => {
         </Carousel>
       </div>
       <div>
-        {prismicH.isFilled.richText(slice.primary.quote) && (
+        {prismicH.isFilled.richText(slice.primary.quotes) && (
           <p
             className={clsx(
               "text-m font-medium italic leading-tight text-white md:px-24 md:text-2xl md:leading-tight",
-              !prismicH.isFilled.keyText(slice.primary.source) && "text-center"
+              !prismicH.isFilled.keyText(slice.primary.quotes_by) &&
+                "text-center"
             )}
           >
             <span className="select-none text-slate-400">&rdquo; </span>
-            <PrismicText field={slice.primary.quote} />
+            <PrismicText field={slice.primary.quotes} />
             <span className="select-none text-slate-400"> &rdquo;</span>
           </p>
         )}

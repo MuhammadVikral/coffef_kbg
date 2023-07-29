@@ -8,9 +8,10 @@
     "dev": "concurrently \"npm:next:dev\" \"npm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
     "next:dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "lint": "next lint",
     "slicemachine": "start-slicemachine",
+    "rebuild": "next build && next start",
     "format": "prettier --write ."
   },
   "dependencies": {

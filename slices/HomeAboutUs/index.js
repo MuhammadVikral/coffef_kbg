@@ -13,7 +13,7 @@ const HomeAboutUs = ({ slice }) => {
   const image = slice.primary.image;
   const backgroundImage = slice.primary.background_image;
   return (
-    <section className="relative  pb-12 text-white">
+    <section className="relative pb-12 text-white">
       {prismicH.isFilled.image(backgroundImage) && (
         <PrismicNextImage
           field={backgroundImage}
